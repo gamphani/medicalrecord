@@ -1,2 +1,46 @@
 <h1>New medical record</h1>
 
+ <%= bootstrap_form_tag url: '/subscribe' do |f| %>
+ <table style="width:60%;border-spacing: 20px;border-collapse: separate;border:1px solid black;margin-left:10px">
+ 	<tr>
+ 		<td style="width:30%"><%= f.text_field "", placeholder:"First name"%></td>
+  		<td style="width:30%"><%= f.text_field "", placeholder:"First name"%></td>
+  	</tr>
+
+<tr>
+<%= f.form_group :gender do %>
+  <td nowrap><%= f.radio_button :gender, 0, label: "Male" %>
+  <%= f.radio_button :gender, 1, label: "Female" %></td>
+ <% end %>
+  <td><%= f.text_field "", placeholder:"Age" %></td>
+</tr>
+<tr>
+ <td> <%= f.select "", [["City", 0], ["Lilongwe", 1], ["Kigali", 2], ["Kampala", 3]], { wrapper: { class: 'has-warning', data: { foo: 'bar' } } }, { class: "selectpicker" } %></td>
+  <td><%= f.select  "", [["Country", 0], ["Malawi", 1], ["Rwanda", 2], ["Uganda", 3]], { wrapper: { class: 'has-warning', data: { foo: 'bar' } } }, { class: "selectpicker" } %></td>
+</tr>
+<tr>
+  <td>Living with diabetes?</td>
+  <td><%= f.form_group :diabetes do %>
+  <%= f.radio_button :diabetes, 0, label:"Yes" %>
+  <%= f.radio_button :diabetes, 1, label: "No"  %>
+ 
+  <%= f.radio_button :diabetes, 3, label: "Unknown" %>
+<% end %></td>
+</tr>
+ <tr><td>&nbsp;</td>
+  <td><%= f.submit "Save" %></td>
+<tr><td colspan="2"><hr style="border-top: 1px solid black"></td></tr>
+<tr>
+<td>List of medical records</td>
+<td><%= f.check_box "Only minors" %></td>
+</tr>
+<tr>
+ 		<td style="width:30%" colspan="2"><%= f.text_field "", placeholder:"Jean DUPONT(Male), 46 - aris(France)"%></td></tr>
+ 		<tr>
+ 		<td style="width:30%" colspan="2"><%= f.text_field "", placeholder:"Amina TALEB(Female), 12 - Algier (Algeria)"%></td></tr>
+ 		<tr>
+ 		<td style="width:30%" colspan="2"><%= f.text_field "", placeholder:"Marc VANVO(Male), 19 - Brussels(Belgium)"%></td></tr> 
+</table>
+  <% end %>
+
+
